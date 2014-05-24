@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- RS Tracker Interface Data --> 
+<!-- Don't edit this unless you're familiar with XML -->
+
+<InterfaceState>
+	<Tab>
+		<Username></Username>
+		<Skill>
+			<Skillname></Skillname>
+			<CurrentExperience></CurrentExperience>
+			<Rank></Rank>
+			<GoalExperience></GoalExperience>
+		</Skill>
+	</Tab>
+</InterfaceState>

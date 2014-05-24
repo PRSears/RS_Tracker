@@ -1,0 +1,52 @@
+[March 3 2014]
+	Fixed UserTrackerTabs not having their TabClosing events subscribed to by MainForm
+	Fixed SkillTrackerBars not closing when the bar is constructed by TrackingState.Load() (the BarClosing event was never subscribed to)
+	Fixed bug where closing all tabs would disable the option of opening a new one
+	Fixed issue where SkillTrackerBars created by TrackingState.Load() wouldn't show previous xp/goal/rank
+	Removed Skill.Visible attribute. (Never used)
+	Fixed issue where removed Controls were not getting disposed of
+	Added ControlUpdatedEventHandler, and subscribed to it in MainForm to save UIState
+	Rewrote Highscores to use static methods
+	Fixed error in Highscores parsing where new minigames weren't recognized (caused crash)
+	Fixed references to Player objects between UiState.Load() > tabs > bars
+	Removed calls to database / highscores in Player object. It is now (correctly) only used to encapsulate data relevant to the player
+	Highscores now inserts latest scores into the database
+	Fixed progress bar not showing progress (since long / long was always rounding down to 0). Really fucking annoying, but everything had to be cast to double first.
+	Fixed *ExpBox text justification behaviour
+	Fixed GoalBox text entry and parsing
+	Fixed Skill.LevelAtExperience and Skill.ExperienceAtLevel behaviour to properly account for total xp greater than 200,000,000 (MaxSkillXP)
+	Fixed UserTrackerTab.usernameTextBox not showing the correct username on loaded tabs
+	Fixed bug where TabPage.Text wasn't changing (TabControl was calling TabPage.Text when it was redrawing instead of UserTrackerTab.Text) when a new user was being tracked
+	...And probably more that I forgot / fixed along the way with the other bullshit. I should have split up the commits, but it's been a very obsessive day.
+	
+[March 6 2014]
+	Cleaned up textbox parsing
+	Fixed bug where UserTrackerTabs were getting instantiated twice
+	
+[March 9 2014]
+	Spent hours sorting out lovely bugs in Linq to SQL
+	Began work converting db operations to using Linq
+	
+[March 13 2014]
+	Finished rewrite of DatabaseInterface
+	Made Highscores class properly interact with the database
+	
+[March 14 2014]
+	Fixed bug where entering a goal over 200M xp wasn't accepted. 
+	Fixed not being able to escape textbox without clicking 
+	Added Drag & Drop to SkillTrackerBars
+	Started cleanup of TabControl object
+	Added drag drop support to tabs
+	
+[March 15 2014]
+	Fully implemented Drag drop support for tabs
+	Completed DraggableTabControl object
+	Moved all logic concerning tabs and interface state out of MainForm and into DraggableTabControl
+	Fixed bug with moving SkillTrackerBars where new positions were not being reflected in UserTrackerTab.TrackingSkills (and therefore the order was not being saved to XML)
+	
+	Added function to track every skill for the current tab
+	Fixed window width so scroll bars don't cover other controls
+	Fixed tab header controls drawing on top of the flowLayoutPanel 
+	Added function to push a status update to the status bar
+	Added function to export Interface.XML 
+	Fixed bug where database was being updated with data just taken from the database
